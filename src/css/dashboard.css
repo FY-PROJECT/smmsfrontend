@@ -1,0 +1,460 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+:root
+{
+    --blue: #287bff;
+    --white: rgb(252, 252, 252);
+    --grey: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+
+html{
+scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+    width: 5px;
+}
+
+html::-webkit-scrollbar-thumb{
+    background-color: #919ca7;
+    border-radius: 50px;
+}
+
+html::-webkit-scrollbar-track{
+    background-color: #c3ccd4;
+}
+
+body{
+    min-height: 100vh;
+    background: var(--white);
+}
+
+
+.container {
+    position: absolute;
+    height: 100%;
+    width: calc(100% - 230px);
+    left: 220px;
+    transition: all 0.6s ease;
+}
+
+.navigation.active ~ .container {
+    width: calc(100% - 0px);
+    left: 100px; 
+    transition: all 0.6s ease;
+}
+/* 
+.container
+{
+    position: absolute;
+    width: 100%;
+} */
+
+.container h2 {
+    font-size: 40px;
+    text-shadow: 3px 3px 3px #ababab;
+    margin-top: 30px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+.container p {
+    margin: 20px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+.navigation
+{
+    position: fixed;
+    left: 5px;
+    top: 5px;
+    width: 210px;
+    height: 98%;
+    background: #41c3ff;
+    background: linear-gradient(to left, #34c8f5,
+    #4154ff) no-repeat 0 0 / cover;
+    transition: 0.6s;
+    border-radius: 15px;
+    /* overflow: hidden; */
+}
+
+.navigation.active
+{
+    width: 78px;
+}
+
+.navigation .title
+{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.navigation.active .title
+{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.navigation ul
+{
+    position: absolute;
+    top: 12%;
+    left: 10px;
+    width: 100%;
+}
+
+.navigation ul li
+{
+    position: relative;
+    width: 114.5%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-left: -26px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered
+{
+    background: var(--white);
+}
+
+.navigation ul li a
+{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a
+{
+    color: var(--blue);
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 50px;
+    height: 50px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.navigation ul li a .icon
+{
+    font-size: 22px;
+}
+
+.navigation ul li a .title
+{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+.navigation.active ul li .tooltip{
+    position: absolute;
+    left: 27px;
+    top: 0;
+    transform: translate(-50%, -200%);
+    border-radius: 6px;
+    height: 35px;
+    width: 85px;
+    background: var(--white);
+    line-height: 35px;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(3, 3, 3, 0.815);
+    transition: 0s;
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+}
+
+.navigation ul li .tooltip{
+    display: none;
+}
+
+.navigation ul li:hover .tooltip{
+    transition: all 0.4s ease;
+    opacity: 1;
+    top: 50%;
+}
+
+/* Curve Outside */
+
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before
+{
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: -50px;
+    width: 60px;
+    height: 50px;
+    background: transparent;
+    border-radius: 70%;
+    box-shadow:35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after
+{
+    content: '';
+    position: absolute;
+    right: 10px;
+    bottom: -50px;
+    width: 60px;
+    height: 50px;
+    background: transparent;
+    border-radius: 70%;
+    box-shadow:35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+/* After Toggle Click */
+.navigation.active ul li:hover a::before,
+.navigation.active ul li.hovered a::before
+{
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: -49px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 70%;
+    box-shadow:35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+.navigation.active ul li:hover a::after,
+.navigation.active ul li.hovered a::after
+{
+    content: '';
+    position: absolute;
+    left: 12px;
+    bottom: -49px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 70%;
+    box-shadow:35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+/* main */
+
+.main
+{
+    position: fixed;
+    width: calc(50% - 15px); 
+    /* background-color: #222;  */
+    transition: 0.6s;
+}
+
+.main.active
+{
+    width: calc(8% - 13px);
+    /* left: 80px; */
+}
+
+.topbar
+{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.toggle
+{
+    color: #ffffff;
+    position: relative;
+    top: 2px;
+    left: 25%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.button{  
+    background: #41c3ff;
+    background: linear-gradient(to right, #34c8f5, #4154ff) no-repeat 0 0 / cover;
+    border: 1px solid white;
+    border-radius: 5px;	
+	padding: 6px 15px;
+	color: rgb(255, 255, 255);
+	text-decoration: none; 	   
+    transition:0.5s;
+    position: relative;
+    z-index: -1;
+}	
+
+.button:hover{
+    background: #41c3ff;
+    background: linear-gradient(to right, #4154ff, #34c8f5) no-repeat 0 0 / cover;
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+
+.main-buttons {
+    max-width:1000px;
+    margin: 20px 200px;
+    text-align: center;
+    padding: 2px;
+}
+
+.table  thead {
+    background-color: #1b81e0;
+    color: rgb(255, 255, 255);
+} 
+
+.table-bordered{
+    width: 100%;
+    max-width: 1120px;
+    margin: 40px auto;
+    border-bottom: 2px solid #1b81e0;
+    box-shadow: 0 4px 20px rgba(5, 57, 94, .5);
+    -moz-box-shadow: 0 4px 20px rgba(5, 57, 94, .5);
+    -webkit-box-shadow: 0 4px 20px rgba(5, 57, 94, .5);
+}
+
+.table tbody tr 
+{
+    color: rgba(5, 57, 94, 1);
+}
+
+/* Small Screens */
+
+@media only screen and (max-width: 767px)
+{
+    .navigation, .navigation.active
+    {
+        position: fixed;
+        bottom: 0;
+        top: 90%;
+        width: 98.5%;
+        height: 4rem;
+        flex-direction: row;
+    }
+
+    .toggle{
+        display: none;
+    }
+
+    .navigation ul 
+    {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .navigation ul li
+    {
+        width: 21%;
+        border-radius: 30px;
+    
+    }
+
+    .navigation ul li:hover a::before,
+    .navigation ul li.hovered a::before{
+        display: none;
+    }
+
+    .navigation ul li:hover a::after,
+    .navigation ul li.hovered a::after{
+        display: none;
+    }
+
+    .navigation ul li a .title{
+        display: none;
+    }
+
+    .navigation ul li a .icon
+    {
+    font-size: 25px;
+    left: 25px;
+    bottom: 7px;
+    }
+
+    .main-buttons{
+        margin: 10px;
+    }
+
+    .container {  
+       left: 15%;
+       font-size: 12px;
+    }
+
+    .container h2{
+        font-size: 22px;
+    }
+
+    .container p{
+        font-size: 12px;
+    }
+
+    table thead{
+        display: none;
+    }
+
+    /* table{
+        box-shadow: none;
+    } */
+
+    table tbody, table tbody tr{
+        display: block;
+        width: 100%;
+    }
+
+    table tbody tr td::before{
+        content: attr(data-title);
+        display: block;
+        font-weight: 600;
+        font-size: 12px;
+        color: rgba(5, 57, 94, .7);
+    }  
+
+    table tbody tr td{
+        display: block;
+        width: 50%;
+        float: left;
+        font-size: 16px;
+        color: rgba(5, 57, 94, 1);
+        font-weight: 700;
+    }
+
+    table tbody tr{
+        margin-bottom: 16px;
+        float: left;
+        clear: both;
+        box-shadow: 0px 4px 20px rgba(5, 57, 94, .5);
+        -moz-box-shadow: 0px 4px 20px rgba(5, 57, 94, .5);
+        -webkit-box-shadow: 0px 4px 20px rgba(5, 57, 94, .5);
+    }
+}
