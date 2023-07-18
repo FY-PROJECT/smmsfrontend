@@ -3,7 +3,9 @@ import QueryContext from "./queryContext";
 
 const QueryState = (props) => {
 
-    const HOST = "https://smms-0wi6.onrender.com";
+    // const HOST = "https://smms-0wi6.onrender.com";
+    //const HOST = "http://54.206.127.33:5000"
+    const HOST = "http://127.0.0.1:5000"
     /**
         @param {Object} query - The query object to be sent to the backend
         @param {string} query.name - The name of the person sending the query
